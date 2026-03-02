@@ -106,7 +106,7 @@ export default function Home() {
               <div className="relative overflow-hidden rounded-3xl border border-white/40 bg-white/70 shadow-sm backdrop-blur">
                 <div className="relative h-[360px] w-full md:h-[440px]">
                   <Image
-                    src="/hero/hero.jpg"
+                    src="/products/temp.jpeg"
                     alt="Yogurt griego NATA con frutas"
                     fill
                     priority
@@ -135,7 +135,7 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-3xl border border-white/40 bg-white/70 shadow-sm backdrop-blur">
               <div className="relative h-[320px] w-full md:h-[380px]">
                 <Image
-                  src="/hero/section.jpg"
+                  src="/products/temp2.jpeg"
                   alt="Granola con miel y yogurt"
                   fill
                   className="object-cover"
@@ -307,7 +307,7 @@ export default function Home() {
 
                     {/* CTA WhatsApp */}
                     <div className="flex items-center justify-between gap-3">
-                      <WhatsAppButton message={msg} size="sm" />
+                      <WhatsAppButton message={msg}  />
                       <Link
                         href="/catalogo"
                         className="flex-shrink-0 w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-emerald-100 hover:text-emerald-700 transition"

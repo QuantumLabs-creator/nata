@@ -37,8 +37,11 @@ function NavLink({ href, label }: NavItem) {
 }
 
 export default function Navbar() {
+  const mobileItems = Array.from(
+    new Map([...left, ...right].map((i) => [i.href, i])).values()
+  );
   return (
-  <header className="fixed top-6 left-0 right-0 z-50">
+    <header className="fixed top-6 left-0 right-0 z-50">
       {/* Fondo transparente (sin línea) */}
       <div className="w-full">
         <div className="mx-auto w-full max-w-[1000px] px-4 sm:px-6 md:px-10 xl:px-12">
@@ -88,7 +91,7 @@ export default function Navbar() {
 
             {/* Mobile links row */}
             <div className="md:hidden px-4 sm:px-6 pb-4 flex flex-wrap gap-x-4 gap-y-2">
-              {[...left, ...right].map((item) => (
+              {mobileItems.map((item) => (
                 <NavLink key={item.href} {...item} />
               ))}
             </div>

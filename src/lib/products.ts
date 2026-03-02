@@ -16,7 +16,7 @@ export const products: Product[] = [
     price: 12,
     size: "1L",
     flavor: "Natural",
-    image: "/products/natural.jpg",
+    image: "/products/temp.jpeg",
   },
   {
     id: "2",
@@ -25,6 +25,6 @@ export const products: Product[] = [
     price: 7,
     size: "500ml",
     flavor: "Fresa",
-    image: "/products/fresa.jpg",
+    image: "/products/temp2.jpeg",
   },
 ];
