@@ -144,26 +144,65 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/40 bg-white/70 p-6 shadow-sm backdrop-blur">
-              <h2 className="text-2xl font-semibold">Hecho para disfrutarlo de verdad</h2>
-              <p className="mt-3 text-gray-700 max-w-[60ch]">
+            <div className="relative">
+              {/* Badge decorativo */}
+              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100/80 px-3 py-1 text-xs text-emerald-700 mb-4">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                100% Artesanal
+              </div>
+
+              <h2 className="text-3xl font-semibold text-gray-800">
+                Hecho para{" "}
+                <span className="bg-gradient-to-r from-teal-700 to-emerald-600 bg-clip-text text-transparent">
+                  disfrutarlo de verdad
+                </span>
+              </h2>
+
+              <p className="mt-4 text-gray-600 max-w-[60ch] leading-relaxed">
                 Yogurt griego artesanal con ingredientes simples y ricos.
+                Sin conservantes, sin colorantes, solo sabor natural.
               </p>
 
-              <div className="mt-6 grid gap-3">
-                <Bullet title="Leche pasteurizada" desc="Base segura y de calidad." />
-                <Bullet title="Frutas naturales" desc="Sabor real, no artificial." />
-                <Bullet title="Granola con miel" desc="Crocante + dulce natural." />
+              {/* Features con iconos */}
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <FeatureIcon
+                  icon="🥛"
+                  title="Leche pasteurizada"
+                  desc="Base segura y de calidad"
+                />
+                <FeatureIcon
+                  icon="🍓"
+                  title="Frutas naturales"
+                  desc="Sabor real, no artificial"
+                />
+                <FeatureIcon
+                  icon="🍯"
+                  title="Granola con miel"
+                  desc="Crocante + dulce natural"
+                />
+                <FeatureIcon
+                  icon="🌿"
+                  title="Sin conservantes"
+                  desc="100% natural y fresco"
+                />
               </div>
 
-              <div className="mt-6">
+              {/* CTA */}
+              <div className="mt-8">
                 <Link
                   href="/catalogo"
-                  className="inline-flex w-full items-center justify-center rounded-2xl border border-white/40 bg-white px-4 py-3 hover:bg-emerald-50 transition"
+                  className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-teal-700 to-emerald-600 px-6 py-3 text-white font-medium shadow-md hover:shadow-lg hover:opacity-95 transition"
                 >
                   Ver productos
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </Link>
               </div>
+
+              {/* Elemento decorativo de fondo */}
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-100/50 rounded-full blur-2xl -z-10" />
+              <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-teal-100/50 rounded-full blur-2xl -z-10" />
             </div>
           </div>
         </div>
@@ -172,18 +211,42 @@ export default function Home() {
       {/* Recomendados */}
       <section className="w-full">
         <div className="mx-auto w-full max-w-[1800px] px-6 pb-14 md:px-10 xl:px-12">
-          <div className="flex items-end justify-between gap-4">
+          {/* Header de sección */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
-              <h2 className="text-xl font-semibold">Recomendados</h2>
-              <p className="text-sm text-gray-700">Elige uno y pide por WhatsApp.</p>
+              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100/80 px-3 py-1 text-xs text-emerald-700 mb-3">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                Los favoritos
+              </div>
+              <h2 className="text-3xl font-semibold text-gray-800">
+                Productos{" "}
+                <span className="bg-gradient-to-r from-teal-700 to-emerald-600 bg-clip-text text-transparent">
+                  Recomendados
+                </span>
+              </h2>
+              <p className="mt-2 text-gray-600 max-w-md">
+                Elige uno de nuestros favoritos y pide directamente por WhatsApp.
+              </p>
             </div>
-            <Link href="/catalogo" className="text-sm underline text-gray-700 hover:text-black">
-              Ver todo
+            <Link
+              href="/catalogo"
+              className="inline-flex items-center gap-2 text-sm font-medium text-emerald-700 hover:text-emerald-900 transition group"
+            >
+              Ver todo el catálogo
+              <svg
+                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
 
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((p) => {
+          {/* Grid de productos */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((p, index) => {
               const msg = `Hola, quiero pedir NATA:
 • ${p.name} (${p.size})
 • S/ ${p.price}
@@ -192,33 +255,72 @@ export default function Home() {
               return (
                 <article
                   key={p.id}
-                  className="rounded-3xl border border-white/40 bg-white/80 shadow-sm backdrop-blur hover:shadow-md transition overflow-hidden"
+                  className="group relative rounded-3xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
                 >
-                  <div className="relative h-44 w-full bg-gray-100">
+                  {/* Badge de posición (opcional) */}
+                  {index === 0 && (
+                    <div className="absolute top-4 left-4 z-10 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 text-xs font-medium text-white shadow-md">
+                      ⭐ Más vendido
+                    </div>
+                  )}
+
+                  {/* Imagen con overlay */}
+                  <div className="relative h-52 w-full bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
                     <Image
                       src={p.image}
                       alt={p.name}
                       fill
-                      className="object-cover"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 1024px) 100vw, 33vw"
                     />
+                    {/* Overlay al hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
+                  {/* Contenido */}
                   <div className="p-5">
+                    {/* Tags de sabor y tamaño */}
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs text-emerald-700 font-medium">
+                        {p.flavor}
+                      </span>
+                      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600">
+                        {p.size}
+                      </span>
+                    </div>
+
+                    {/* Nombre y precio */}
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <p className="font-medium">{p.name}</p>
-                        <p className="text-sm text-gray-700">
-                          {p.size} • {p.flavor}
-                        </p>
+                        <h3 className="font-semibold text-gray-800 group-hover:text-emerald-700 transition-colors">
+                          {p.name}
+                        </h3>
+                        <p className="text-sm text-gray-500">Yogurt griego artesanal</p>
                       </div>
-                      <p className="font-semibold">S/ {p.price}</p>
+                      <div className="text-right">
+                        <p className="text-lg font-bold text-emerald-700">S/ {p.price}</p>
+                      </div>
                     </div>
 
-                    <div className="mt-4">
-                      <WhatsAppButton message={msg} />
+                    {/* Divider */}
+                    <div className="my-4 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+
+                    {/* CTA WhatsApp */}
+                    <div className="flex items-center justify-between gap-3">
+                      <WhatsAppButton message={msg} size="sm" />
+                      <Link
+                        href="/catalogo"
+                        className="flex-shrink-0 w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-emerald-100 hover:text-emerald-700 transition"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                      </Link>
                     </div>
                   </div>
+
+                  {/* Decoración de fondo */}
+                  <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-emerald-100/30 rounded-full blur-3xl -z-10 group-hover:bg-emerald-100/50 transition" />
                 </article>
               );
             })}
@@ -267,11 +369,17 @@ function InfoCard({ title, desc }: { title: string; desc: string }) {
   );
 }
 
-function Bullet({ title, desc }: { title: string; desc: string }) {
+
+function FeatureIcon({ icon, title, desc }: { icon: string; title: string; desc: string }) {
   return (
-    <div className="rounded-2xl border border-white/30 bg-white p-4">
-      <p className="font-medium">{title}</p>
-      <p className="text-sm text-gray-700">{desc}</p>
+    <div className="flex items-start gap-3">
+      <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-emerald-100/80 flex items-center justify-center text-lg">
+        {icon}
+      </div>
+      <div>
+        <p className="font-medium text-gray-800">{title}</p>
+        <p className="text-sm text-gray-600">{desc}</p>
+      </div>
     </div>
   );
 }
