@@ -79,7 +79,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-4 text-gray-700 md:text-lg max-w-[52ch]">
-                Cremoso, rico y natural. Pide por WhatsApp y coordinamos la entrega.
+                Cremoso, rico y natural.
               </p>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
